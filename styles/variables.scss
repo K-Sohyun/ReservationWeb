@@ -1,0 +1,107 @@
+/* 변수 설정 */
+$font-family-base: "Pretendard", sans-serif;
+
+$fs-header: 3rem;
+$fs-title-100: 2.4rem;
+$fs-title-200: 2.6rem;
+$fs-title-300: 2.8rem;
+$fs-body-100: 1.4rem;
+$fs-body-200: 1.5rem;
+$fs-body-300: 1.6rem;
+$fs-body-400: 1.8rem;
+$fs-body-500: 2rem;
+
+$color-primary-100: #00387e;
+$color-primary-200: #026fb0;
+$color-secondary-100: #01bbcb;
+$color-secondary-200: #f0f8ff;
+$color-secondary-300: #f7e1cc;
+$color-system-generic: #3181ff;
+$color-system-success: #2f9e44;
+$color-system-warning: #ffc805;
+$color-system-error: #e03131;
+$color-system-point: #fa284d;
+
+$color-text-default: #222;
+$color-text-body: #666;
+$color-text-sub: #999;
+$color-disabled-text: #a5a5a5;
+$color-disabled-base: #e0e0e0;
+
+$color-white: #fff;
+$color-black: #000;
+$color-border-gray: #ddd;
+$color-gray-100: #f5f5f5;
+$color-gray-200: #d7d7d7;
+
+$z-index-back: -1;
+$z-index-default: 1;
+$z-index-content: 10;
+$z-index-dropdown: 100;
+$z-index-header: 1000;
+$z-index-modal: 1100;
+$z-index-tooltip: 9999;
+
+$border-radius-small: 6px;
+$border-radius-medium: 8px;
+$border-radius-large: 20px;
+$border-radius-circle: 50%;
+
+$box-shadow: 0 0 10px rgba(218, 218, 218, 0.5);
+
+/* FONT */
+@mixin font-face($weight, $value) {
+  @font-face {
+    font-family: "Pretendard";
+    src: url("../public/fonts/Pretendard-#{$weight}.woff") format("woff");
+    font-weight: $value;
+  }
+}
+
+@include font-face("Light", 300);
+@include font-face("Regular", 400);
+@include font-face("Medium", 500);
+@include font-face("SemiBold", 600);
+@include font-face("Bold", 700);
+
+/* 믹스인 */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  padding: 0 2rem;
+  line-height: 4rem;
+  font-size: $fs-body-100;
+  color: $color-black;
+  border-radius: $border-radius-small;
+  background-color: $color-gray-200;
+}
+
+@mixin input-base {
+  background-color: $color-white;
+  border: 1px solid $color-gray-200;
+  font-size: $fs-body-100;
+  font-family: $font-family-base;
+  height: 4rem;
+  border-radius: $border-radius-small;
+
+  &:focus {
+    border-color: $color-primary-100;
+    outline: none;
+  }
+}

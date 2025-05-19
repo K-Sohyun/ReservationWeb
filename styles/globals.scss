@@ -1,0 +1,370 @@
+@use "@styles/variables";
+
+/* RESET CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  font-family: variables.$font-family-base;
+  font-size: variables.$fs-body-100;
+  font-weight: 400;
+  line-height: 1.2;
+  color: variables.$color-text-default;
+  padding-top: 7rem;
+
+  ol,
+  ul,
+  dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: variables.$font-family-base;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  input,
+  select,
+  textarea {
+    @include variables.input-base;
+  }
+
+  input {
+    padding: 0 2rem;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: variables.$color-text-sub;
+  }
+
+  input:disabled {
+    background-color: variables.$color-disabled-base;
+    color: variables.$color-disabled-text;
+  }
+
+  input[type="date"] {
+    width: 17rem;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: block;
+    opacity: 1;
+    color: variables.$color-text-sub;
+    background: url("../public/images/ico_input_date.svg") no-repeat right
+      center;
+    width: 24px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../public/images/ico_select_arrow.svg") no-repeat right
+      15px center variables.$color-white;
+    padding: 0 4rem 0 2rem;
+    min-width: 15rem;
+    cursor: pointer;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  select option {
+    color: variables.$color-text-default;
+  }
+
+  textarea {
+    height: auto;
+    resize: none;
+    min-height: 9rem;
+    padding: 1rem;
+  }
+}
+
+/* 스크롤바 CSS */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+
+  &-track {
+    background: transparent;
+  }
+
+  &-thumb {
+    background: #e3e3e3;
+    border-radius: variables.$border-radius-small;
+    border: 4px solid variables.$color-white;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
+/* 공통 클래스 */
+.container {
+  max-width: 143rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.clear {
+  &::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.skip-tag {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+.error-text {
+  color: variables.$color-system-error;
+  font-size: variables.$fs-body-100;
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.ellipsis {
+  @include variables.ellipsis;
+}
+
+.flex-center {
+  @include variables.flex-center;
+}
+
+.bgNo {
+  background: none !important;
+}
+
+/* 공통 여백 */
+body .mgNo {
+  margin: 0 !important;
+}
+
+body .mT100 {
+  margin-top: 10rem;
+}
+
+body .mB100 {
+  margin-bottom: 10rem;
+}
+
+/* 공통 레이아웃 */
+/* Header */
+#hd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 7rem;
+  padding: 0 6rem;
+  background: variables.$color-white;
+  border-bottom: 1px solid variables.$color-border-gray;
+  z-index: variables.$z-index-header;
+}
+
+/* Footer */
+#ft {
+  position: relative;
+  background: #212121;
+  padding: 4rem 6rem;
+  text-align: center;
+
+  * {
+    font-size: variables.$fs-body-200;
+    color: variables.$color-white;
+    line-height: 1.6;
+  }
+}
+
+#ft .logo {
+  display: block;
+  font-size: variables.$fs-title-100;
+  margin-bottom: 2rem;
+}
+
+#ft .compy {
+  span {
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 10px;
+      margin: 0 1rem;
+      background: variables.$color-text-sub;
+    }
+
+    &:last-child::after {
+      content: none;
+    }
+
+    b {
+      font-weight: 400;
+    }
+  }
+}
+
+#ft .copy {
+  font-size: variables.$fs-body-100;
+  margin-top: 1rem;
+
+  button {
+    margin: 0 3px;
+  }
+}
+
+#ft .listGoBtn {
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  background: variables.$color-primary-200;
+  border-radius: variables.$border-radius-small;
+  padding: 1rem 2rem;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Main */
+.main-title {
+  font-size: variables.$fs-header;
+  margin-bottom: 2rem;
+}
+
+.main-banner {
+  height: 60rem;
+  background: variables.$color-gray-200;
+  margin-bottom: 8rem;
+}
+
+.main-gallery {
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    overflow: hidden;
+  }
+
+  li {
+    width: 34rem;
+    height: 34rem;
+    flex: 0 0 auto;
+    background: variables.$color-gray-200;
+  }
+}
+
+.main-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+
+  .notice-box {
+    width: calc(100% - 38rem);
+  }
+
+  .booking-box {
+    width: 35rem;
+  }
+
+  .content-box {
+    background: variables.$color-gray-200;
+    height: 30rem;
+  }
+}
+
+.main-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+
+  .contact-box {
+    width: 40rem;
+  }
+
+  .location-box {
+    width: calc(100% - 43rem);
+  }
+
+  .content-box {
+    background: variables.$color-gray-200;
+    height: 30rem;
+  }
+}
+
+/* 반응형 CSS */
+@media all and (max-width: 1024px) {
+  #hd {
+    padding: 0 1.5rem;
+  }
+
+  #ft {
+    padding: 3rem 1.5rem;
+  }
+}
