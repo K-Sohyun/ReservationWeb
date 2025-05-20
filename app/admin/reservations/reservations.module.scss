@@ -1,0 +1,38 @@
+@use "@styles/variables";
+
+.container {
+  text-align: center;
+  max-width: 143rem;
+  padding: 10rem 1.5rem;
+  margin: 0 auto;
+  min-height: calc(100vh - 39rem);
+
+  p {
+    font-size: variables.$fs-body-300;
+  }
+}
+
+.title {
+  font-size: variables.$fs-header;
+  margin-bottom: 5rem;
+}
+
+.table {
+  width: 100%;
+
+  thead {
+    background: variables.$color-secondary-200;
+    border-bottom: 2px solid variables.$color-primary-200;
+  }
+
+  th {
+    height: 5rem;
+    padding: 0 1rem;
+    border-right: 1px solid variables.$color-white;
+  }
+
+  td {
+    padding: 1.6rem 1rem;
+    border-bottom: 1px solid variables.$color-border-gray;
+  }
+}

@@ -8,13 +8,13 @@ import { FiMenu, FiX } from "react-icons/fi";
 const menuData = [
   { title: "펜션소개", link: "/" },
   { title: "주변관광지", link: "/" },
-  { title: "예약안내", link: "/" },
+  { title: "예약안내", link: "/reserve" },
   {
     title: "커뮤니티",
-    link: "/community",
+    link: "/",
     sub: [
-      { title: "공지사항", link: "/community/notice" },
-      { title: "포토갤러리", link: "/community/gallery" },
+      { title: "공지사항", link: "/" },
+      { title: "포토갤러리", link: "/" },
     ],
   },
 ];

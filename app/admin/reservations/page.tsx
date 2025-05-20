@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@lib/supabase";
+import styles from "./reservations.module.scss";
 
 type Reservation = {
   id: string;
@@ -79,27 +80,44 @@ export default function AdminReservationsPage() {
   if (!isAuthorized) return null;
 
   return (
-    <section>
-      <h2>관리자 예약 리스트</h2>
+    <section className={styles.container}>
+      <h2 className={styles.title}>관리자 예약 리스트</h2>
       {loading ? (
         <p>불러오는 중...</p>
       ) : reservations.length === 0 ? (
         <p>등록된 예약이 없습니다.</p>
       ) : (
-        <ul>
-          {reservations.map((r) => (
-            <li key={r.id}>
-              <p>
-                <strong>{r.name}</strong> ({r.people}명)
-              </p>
-              <p>
-                {r.startDate} ~ {r.endDate}
-              </p>
-              <p>연락처: {r.phone}</p>
-              <p>메모: {r.memo || "-"}</p>
-            </li>
-          ))}
-        </ul>
+        <table className={styles.table}>
+          <colgroup>
+            <col width="15%" />
+            <col width="10%" />
+            <col width="25%" />
+            <col width="15%" />
+            <col width="35%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>예약자명</th>
+              <th>인원</th>
+              <th>예약일</th>
+              <th>연락처</th>
+              <th>메모</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reservations.map((r) => (
+              <tr key={r.id}>
+                <td>{r.name}</td>
+                <td>{r.people}명</td>
+                <td>
+                  {r.startDate} - {r.endDate}
+                </td>
+                <td>{r.phone}</td>
+                <td>{r.memo || "-"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </section>
   );

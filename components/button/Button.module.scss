@@ -1,0 +1,70 @@
+@use "@styles/variables";
+
+/* 공통 버튼 */
+.comBtn {
+  @include variables.button-base;
+
+  &:focus,
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--ex-sm {
+    font-size: variables.$fs-body-100;
+    line-height: 3rem;
+  }
+
+  &--md {
+    font-size: variables.$fs-body-300;
+    line-height: 4rem;
+  }
+
+  &--lg {
+    font-size: variables.$fs-body-400;
+    line-height: 5rem;
+  }
+
+  &--ico {
+    width: 5rem;
+    height: 5rem;
+    font-size: 0;
+    padding: 0 !important;
+  }
+
+  &--primary {
+    padding: 0 3rem;
+    background-color: variables.$color-primary-100;
+    color: variables.$color-white;
+    font-weight: 600;
+  }
+
+  &--secondary {
+    padding: 0 3rem;
+    border: 1px solid variables.$color-primary-100;
+    background-color: variables.$color-white;
+    font-weight: 500;
+  }
+
+  &--disabled {
+    padding: 0 3rem;
+    background-color: variables.$color-disabled-base !important;
+    color: variables.$color-disabled-text;
+    cursor: auto;
+  }
+
+  &--request {
+    padding: 0 3rem;
+    background-color: variables.$color-system-point;
+    color: variables.$color-white;
+    font-weight: 600;
+  }
+
+  &--submit {
+    width: 100%;
+    font-size: variables.$fs-body-400;
+    line-height: 5rem;
+    font-weight: 600;
+    background-color: variables.$color-primary-100;
+    color: variables.$color-white;
+  }
+}

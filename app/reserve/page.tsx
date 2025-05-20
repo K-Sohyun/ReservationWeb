@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { supabase } from "@lib/supabase";
+import Button from "@components/button/Button";
+import styles from "./reserve.module.scss";
 
 type ReservationForm = {
   name: string;
@@ -63,7 +65,7 @@ export default function ReservePage() {
       alert("예약이 정상 처리되지 않았습니다. 다시 시도해주세요.");
       console.error(error);
     } else {
-      alert("예약이 완료되었습니다. 확인 후 연락드리겠습니다. 감사합니다 :)");
+      alert("예약이 완료되었습니다. 확인 후 연락드리겠습니다 :)");
       setForm({
         name: "",
         phone: "",
@@ -76,77 +78,107 @@ export default function ReservePage() {
   };
 
   return (
-    <section>
-      <h2>펜션 예약하기</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">이름</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="phone">연락처</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            maxLength={13}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="startDate">시작일</label>
-          <input
-            type="date"
-            id="startDate"
-            name="startDate"
-            value={form.startDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="endDate">종료일</label>
-          <input
-            type="date"
-            id="endDate"
-            name="endDate"
-            value={form.endDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="people">인원 수</label>
-          <input
-            type="number"
-            id="people"
-            name="people"
-            min="1"
-            value={form.people}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="memo">메모</label>
-          <textarea
-            id="memo"
-            name="memo"
-            value={form.memo}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">예약하기</button>
-      </form>
+    <section className={styles.container}>
+      <div className={styles.formBox}>
+        <h2 className={styles.title}>펜션 예약하기</h2>
+        <form onSubmit={handleSubmit}>
+          <ul className={styles.formList}>
+            <li className={styles.formItem}>
+              <label htmlFor="name" className={styles.label}>
+                예약자명
+              </label>
+              <div className={styles.writeBox}>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </li>
+            <li className={styles.formItem}>
+              <label htmlFor="phone" className={styles.label}>
+                연락처
+              </label>
+              <div className={styles.writeBox}>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  maxLength={13}
+                  required
+                />
+              </div>
+            </li>
+            <li className={styles.formItem}>
+              <label htmlFor="startDate" className={styles.label}>
+                예약일
+              </label>
+              <div className={`${styles.writeBox} ${styles.writeDate}`}>
+                <input
+                  type="date"
+                  id="startDate"
+                  name="startDate"
+                  value={form.startDate}
+                  onChange={handleChange}
+                  max="9999-12-31"
+                  required
+                />
+                <span> - </span>
+                <input
+                  type="date"
+                  id="endDate"
+                  name="endDate"
+                  value={form.endDate}
+                  onChange={handleChange}
+                  max="9999-12-31"
+                  required
+                />
+              </div>
+            </li>
+            <li className={styles.formItem}>
+              <label htmlFor="people" className={styles.label}>
+                인원
+              </label>
+              <div className={styles.writeBox}>
+                <input
+                  type="number"
+                  id="people"
+                  name="people"
+                  min="1"
+                  value={form.people}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </li>
+            <li className={styles.formItem}>
+              <label htmlFor="memo" className={styles.label}>
+                메모
+              </label>
+              <div className={styles.writeBox}>
+                <textarea
+                  id="memo"
+                  name="memo"
+                  value={form.memo}
+                  onChange={handleChange}
+                />
+              </div>
+            </li>
+          </ul>
+          <Button
+            type="submit"
+            className={styles.submitBtn}
+            customClass="submit"
+          >
+            예약하기
+          </Button>
+        </form>
+      </div>
     </section>
   );
 }

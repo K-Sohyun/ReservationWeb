@@ -90,6 +90,7 @@ $box-shadow: 0 0 10px rgba(218, 218, 218, 0.5);
   color: $color-black;
   border-radius: $border-radius-small;
   background-color: $color-gray-200;
+  transition: 0.3s;
 }
 
 @mixin input-base {

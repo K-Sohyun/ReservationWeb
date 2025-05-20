@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@lib/supabase";
 import { useRouter } from "next/navigation";
+import styles from "./signup.module.scss";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -26,7 +27,8 @@ export default function SignUpPage() {
       if (error.message === "User already registered") {
         setMessage("이미 가입된 이메일입니다.");
       } else {
-        setMessage("오류 발생 : " + error.message);
+        setMessage("오류가 발생했습니다.");
+        console.log(error.message);
       }
       return;
     }
@@ -59,26 +61,30 @@ export default function SignUpPage() {
   };
 
   return (
-    <section>
-      <h2>회원가입</h2>
-      <form onSubmit={handleSignUp}>
-        <input
-          type="email"
-          placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="비밀번호 (6자 이상)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">가입하기</button>
-      </form>
-      <p>{message}</p>
+    <section className={styles.container}>
+      <div className={styles.formBox}>
+        <h2 className={styles.title}>회원가입</h2>
+        <form onSubmit={handleSignUp}>
+          <input
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="비밀번호 (6자 이상)"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <p className={styles.errorMsg}>{message}</p>
+          <button type="submit" className={styles.submitBtn}>
+            가입하기
+          </button>
+        </form>
+      </div>
     </section>
   );
 }

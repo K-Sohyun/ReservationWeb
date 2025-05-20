@@ -1,0 +1,60 @@
+@use "@styles/variables";
+
+.container {
+  @include variables.flex-center;
+  padding: 10rem 1.5rem;
+  min-height: calc(100vh - 39rem);
+}
+
+.formBox {
+  max-width: 50rem;
+}
+
+.title {
+  font-size: variables.$fs-header;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.formList {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  font-size: 0;
+}
+
+.formItem {
+  width: 100%;
+
+  .label {
+    display: block;
+    font-size: variables.$fs-body-300;
+    font-weight: 500;
+    padding: 0 0 7px 5px;
+  }
+
+  .writeBox {
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+}
+
+.writeDate {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  input[type="date"] {
+    width: calc(50% - 13px);
+  }
+
+  span {
+    font-size: variables.$fs-body-200;
+  }
+}
+
+.submitBtn {
+  margin-top: 2rem;
+}
